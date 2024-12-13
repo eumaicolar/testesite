@@ -1,0 +1,660 @@
+/* Centralização e organização do CSS */
+:root {
+    --blue-dark: #002e5d;
+    --blue-medium: #005792;
+    --gray-light: #f7f7f7;
+    --red: #d9534f;
+    --red-hover: #c9302c;
+    --white: #fff;
+    --transition-speed: 0.3s;
+    --shadow: rgba(0, 0, 0, 0.1);
+    --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+body {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--gray-light);
+}
+
+header {
+    background-color: var(--blue-dark);
+    color: var(--white);
+    padding: 20px;
+    text-align: center;
+    box-shadow: var(--box-shadow);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header h1 {
+    font-size: 2rem;
+    margin: 0;
+}
+
+/* Navigation Styles */
+.navigation {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--blue-medium);
+    padding: 10px 20px;
+    border-bottom: 1px solid #ddd;
+}
+
+.menu-list {
+    display: flex;
+    gap: 15px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.menu-link {
+    text-decoration: none;
+    color: var(--white);
+    font-size: 16px;
+    padding: 10px 15px;
+    margin: 0;
+    border-radius: 8px;
+    transition: background-color var(--transition-speed);
+}
+
+.menu-link:hover {
+    background-color: #005bb5;
+}
+
+/* Menu Dropdown */
+.menu-container {
+    position: relative;
+}
+
+.menu-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+
+.profile-pic {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    margin-right: 8px;
+}
+
+.user-name {
+    font-size: 16px;
+    color: var(--white);
+}
+
+.dropdown-item:hover {
+    background-color: #f5f5f5;
+}
+
+.logout-btn {
+    color: var(--red);
+}
+
+nav {
+    background-color: var(--blue-medium);
+    padding: 10px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.menu-button {
+    background-color: var(--blue-dark);
+    padding: 12px 20px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 1em;
+    transition: background-color var(--transition-speed), transform var(--transition-speed);
+}
+
+.menu-button:hover {
+    background-color: var(--blue-medium);
+    transform: scale(1.03);
+}
+
+.menu-button img {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: 2px solid var(--white);
+}
+
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background-color: var(--white);
+    box-shadow: 0px 4px 12px var(--shadow);
+    border-radius: 8px;
+    overflow: hidden;
+    z-index: 1000;
+}
+
+.dropdown-menu a {
+    display: block;
+    padding: 12px 20px;
+    color: var(--blue-dark);
+    text-decoration: none;
+    font-size: 1em;
+    transition: background-color var(--transition-speed);
+}
+
+.dropdown-menu a:hover {
+    background-color: var(--gray-light);
+}
+
+.menu-container:hover .dropdown-menu {
+    display: block;
+}
+
+/* Modal Styles */
+#modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+#modal-content {
+    background: var(--white);
+    padding: 30px;
+    border-radius: 12px;
+    width: 100%;
+    max-width: 450px;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10%);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+#modal-content form input,
+#modal-content form select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+#modal-content form button {
+    padding: 10px 20px;
+    background-color: var(--blue-dark);
+    color: var(--white);
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color var(--transition-speed);
+}
+
+#modal-content form button:hover {
+    background-color: var(--blue-medium);
+}
+
+#createNoticeModal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+#createNoticeModal #modal-content {
+    background: var(--white);
+    padding: 30px;
+    border-radius: 12px;
+    width: 100%;
+    max-width: 450px;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+.logout-btn {
+    display: block;
+    background-color: var(--red);
+    color: var(--white);
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 4px;
+    margin-top: 10px;
+}
+
+.logout-btn:hover {
+    background-color: var(--red-hover);
+}
+
+/* Chat Styles */
+.chat-container {
+    position: fixed;
+    bottom: 0;
+    right: 20px;
+    width: 300px;
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+    background-color: #ffffff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    font-family: Arial, sans-serif;
+}
+
+/* Estilo para o contêiner geral do chat */
+.chat-container {
+    background-color: #fff; /* Cor de fundo branca */
+    border: 1px solid #ccc; /* Borda fina ao redor do chat */
+    border-radius: 8px; /* Bordas arredondadas */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombras para destacar o chat */
+    max-width: 600px;
+    margin: 20px auto; /* Centraliza o chat na tela */
+    display: flex;
+    flex-direction: column;
+    height: 500px;
+    overflow: hidden;
+}
+
+/* Chat Container */
+.chat-container {
+    background-color: #fff; /* Fundo branco */
+    border: 1px solid #ccc; /* Borda cinza clara */
+    border-radius: 8px; /* Bordas arredondadas */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra */
+    max-width: 300px; /* Largura máxima */
+    display: flex;
+    flex-direction: column;
+    height: 400px; /* Altura fixa */
+    overflow: hidden; /* Oculta conteúdo extra */
+    position: fixed; /* Fixa o chat */
+    bottom: 20px; /* Distância do fundo */
+    right: 20px; /* Distância da direita */
+}
+
+/* Estilo geral do Chat */
+.chat-container {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 100%;
+    max-width: 400px; /* Limite de largura */
+    height: 500px; /* Altura fixa */
+    display: flex;
+    flex-direction: column;
+    background-color: #ffffff;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    font-family: 'Arial', sans-serif;
+    overflow: hidden;
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+/* Animação de entrada */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10%);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Cabeçalho do chat */
+.chat-header {
+    background-color: #0078d7;
+    color: white;
+    padding: 15px;
+    font-size: 1.2em;
+    font-weight: bold;
+    text-align: center;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Área de mensagens */
+.chat-messages {
+    flex-grow: 1;
+    padding: 20px;
+    overflow-y: auto;
+    background-color: #f7f7f7;
+    border-bottom: 1px solid #ccc;
+    border-radius: 10px;
+    font-size: 0.95em;
+}
+
+/* Campo de entrada de mensagem */
+.chat-input {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    background-color: #f1f1f1;
+    border-top: 1px solid #ccc;
+}
+
+.chat-input-field {
+    flex-grow: 1;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    font-size: 1em;
+    margin-right: 10px;
+    transition: border-color 0.3s ease;
+}
+
+.chat-input-field:focus {
+    border-color: #0078d7;
+    outline: none;
+}
+
+/* Botão de envio */
+.chat-send-button {
+    padding: 10px 15px;
+    background-color: #0078d7;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.chat-send-button:hover {
+    background-color: #005bb5;
+}
+
+.chat-send-button:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+}
+
+/* Estilo para cada mensagem */
+.message {
+    background-color: #f1f8ff; /* Cor mais suave para o fundo */
+    color: #1d70b8; /* Cor mais contrastante para o texto */
+    padding: 15px;
+    margin-bottom: 12px;
+    border-radius: 10px;
+    max-width: 75%;
+    font-size: 1em; /* Tamanho de fonte um pouco maior para legibilidade */
+    word-wrap: break-word;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Leve sombra para destacar a mensagem */
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.message.self {
+    background-color: #0078d7; /* Cor de fundo diferente para a mensagem do próprio usuário */
+    color: white;
+    margin-left: auto;
+    margin-right: 0; /* Alinha a mensagem à direita */
+}
+
+.message:hover {
+    background-color: #e1e8f0; /* Destaque suave ao passar o mouse */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15); /* Adiciona uma sombra mais forte ao passar o mouse */
+}
+
+.message strong {
+    font-weight: bold;
+}
+/* Data da mensagem */
+.message-date {
+    font-size: 0.8em;
+    color: #888;
+    text-align: right;
+    margin-top: 8px;
+    margin-right: 5px;
+}
+
+/* Mensagens de erro ou aviso */
+.message.error {
+    background-color: #f8d7da; /* Cor de fundo para mensagens de erro */
+    color: #721c24; /* Cor de texto para erro */
+    border-left: 4px solid #721c24; /* Bordas laterais para destaque */
+}
+
+/* Para mensagens de sucesso */
+.message.success {
+    background-color: #d4edda; /* Cor de fundo para mensagens de sucesso */
+    color: #155724; /* Cor de texto para sucesso */
+    border-left: 4px solid #155724; /* Bordas laterais para destaque */
+}
+
+/* Caixa de notificação */
+.notification {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 15px 25px;
+    background-color: #28a745;
+    color: white;
+    border-radius: 4px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    display: none;
+    animation: slideIn 0.5s ease-out;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+/* Estilos para menu lateral (opcional) */
+.vertical-menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 80px;
+    background-color: #005792;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 20px;
+}
+
+.vertical-menu ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.vertical-menu ul li a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 60px;
+    height: 60px;
+    text-decoration: none;
+}
+
+.vertical-menu ul li a img {
+    width: 30px;
+    height: 30px;
+    filter: brightness(0) invert(1);
+}
+
+.vertical-menu ul li a:hover {
+    background-color: #003f5c;
+    border-radius: 10px;
+}
+/* Esconde o input de arquivo */
+.chat-file-input {
+    display: none; /* Esconde o input de arquivo original */
+}
+
+/* Estilo do ícone "Escolher Arquivo" */
+.file-label {
+    display: inline-block;
+    cursor: pointer;
+    font-size: 20px;
+    color: #007bff;
+    margin-left: 10px;
+    margin-right: 15px
+}
+
+.file-label:hover {
+    color: #0056b3;
+}
+.btn-novo-aviso {
+    background-color: #0056b3; /* Cor de fundo vermelha */
+    color: white; /* Texto branco */
+    font-size: 16px; /* Tamanho da fonte */
+    padding: 10px 20px; /* Espaçamento interno do botão */
+    border: none; /* Remove a borda padrão */
+    border-radius: 5px; /* Bordas arredondadas */
+    cursor: pointer; /* Muda o cursor para indicar que é clicável */
+    transition: background-color 0.3s ease, transform 0.2s ease; /* Efeitos de transição */
+}
+
+.btn-novo-aviso:hover {
+    background-color: #007bff; /* Cor de fundo ao passar o mouse (tom mais escuro de vermelho) */
+    transform: scale(1.05); /* Aumenta levemente o tamanho do botão ao passar o mouse */
+}
+
+.btn-novo-aviso:active {
+    background-color: #007bff; /* Cor de fundo ao clicar */
+    transform: scale(0.98); /* Levemente reduzido ao clicar */
+}
+/* Estilos para a seção de Avisos Importantes */
+.avisos-container {
+    background-color: #f9f9f9;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+    padding: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
+    max-width: 100%;
+    margin-top: 20px;
+}
+
+/* Título da Seção */
+.avisos-container h3 {
+    font-size: 24px;
+    color: #005bb5;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.avisos-container .btn-novo-aviso {
+    background-color: #0078d7;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    display: inline-block;
+    margin-top: 15px;
+    border: none;
+    text-align: center;
+}
+
+.avisos-container .btn-novo-aviso:hover {
+    background-color: #005bb5;
+}
+
+/* Estilo para cada aviso */
+.avisos-container ul {
+    list-style: none;
+    padding: 0;
+    margin-top: 20px;
+}
+
+.avisos-container li {
+    background-color: #ffffff;
+    border-left: 5px solid #0078d7; /* Destaque com linha à esquerda */
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease-in-out;
+}
+
+.avisos-container li:hover {
+    background-color: #f1f1f1;
+    transform: scale(1.02); /* Leve efeito de zoom ao passar o mouse */
+}
+
+/* Título de cada aviso */
+.avisos-container li strong {
+    font-size: 18px;
+    color: #005bb5;
+    display: block;
+    margin-bottom: 8px;
+}
+
+/* Descrição do aviso */
+.avisos-container li p {
+    font-size: 14px;
+    color: #555;
+    margin: 5px 0;
+}
+
+/* Data do Aviso */
+.avisos-container li .date {
+    font-size: 12px;
+    color: #777;
+    margin-top: 10px;
+}
+
+/* Adicionando animação ao aviso */
+.avisos-container li .new {
+    font-weight: bold;
+    color: #e53935;
+    font-size: 14px;
+    padding: 5px;
+    background-color: #ffebee;
+    border-radius: 4px;
+    display: inline-block;
+}
+
+/* Estilo de mensagem de aviso (ícone de aviso) */
+.fas.fa-exclamation-triangle {
+    font-size: 28px;
+    color: #005bb5;
+}
